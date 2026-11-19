@@ -1,0 +1,29 @@
+{
+ "at": "2026-11-19T21:30:56+00:00",
+ "suite": "freecodecamp",
+ "repo": "BluebagAI/bench-freecodecamp",
+ "runner": "blacksmith-4",
+ "shards": "1",
+ "note": "measured",
+ "run": "https://github.com/BluebagAI/bench-freecodecamp/actions/runs/44616674199",
+ "run_id": 44616674199,
+ "sha": "b75488463cbaabdacb22a62382afd3fa40e3b3a4",
+ "conclusion": "success",
+ "wall_s": 981,
+ "queue_s": 5,
+ "job_s": 1212,
+ "jobs": 3,
+ "job_max_s": 577,
+ "vcpu_min": 80.8,
+ "billed_min": 21,
+ "usd": 0.168,
+ "tests": {
+  "passed": 274,
+  "failed": 0,
+  "flaky": 0,
+  "skipped": 17,
+  "failed_tests": [],
+  "flaky_tests": [],
+  "files": 1
+ }
+}
