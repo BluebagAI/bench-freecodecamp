@@ -4,7 +4,9 @@
 # any runner (upstream's remote cache needs freeCodeCamp's TURBO_TOKEN; its local .turbo cache
 # would hit fully on reruns of the same commit). freeCodeCamp/client-config is pinned to a commit.
 # Same steps and commit on every runner; only the test step differs. The config pins workers: 3
-# for a 4 vCPU runner, so rivals run upstream's size (4 vCPU); every runner uses Ubuntu 24.04.
+# for a 4 vCPU runner, so rivals run upstream's size (4 vCPU). GitHub runs upstream's ubuntu-26.04
+# (on ubuntu-24.04 the Playwright system packages took 582 s from a slow apt mirror); Blacksmith
+# runs its Ubuntu 24.04 image, as on every other suite.
 name: bench
 on:
   workflow_dispatch:
@@ -20,7 +22,7 @@ permissions:
 jobs:
   build:
     name: Build (${{ inputs.runner }})
-    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-24.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
+    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-26.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
     timeout-minutes: 30
     steps:
       - name: Checkout
@@ -57,7 +59,7 @@ jobs:
 
   build-e2e-api:
     name: Build E2E API (${{ inputs.runner }})
-    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-24.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
+    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-26.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
     timeout-minutes: 20
     steps:
       - name: Checkout Source Files
@@ -85,7 +87,7 @@ jobs:
   e2e:
     name: E2E chromium (${{ inputs.runner }})
     needs: [build, build-e2e-api]
-    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-24.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
+    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-26.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
     timeout-minutes: 45
     steps:
       - name: Set Action Environment Variables
