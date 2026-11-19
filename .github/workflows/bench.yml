@@ -1,0 +1,197 @@
+# Benchmark copy of freeCodeCamp/freeCodeCamp's node.js-tests.yml e2e path: the Build job (client)
+# and the Build E2E API (Container) job, then e2e-playwright.yml's chromium job, as upstream runs
+# them on pull requests. Lint and unit test jobs are left out on every runner. No Turbo cache on
+# any runner (upstream's remote cache needs freeCodeCamp's TURBO_TOKEN; its local .turbo cache
+# would hit fully on reruns of the same commit). freeCodeCamp/client-config is pinned to a commit.
+# Same steps and commit on every runner; only the test step differs. The config pins workers: 3
+# for a 4 vCPU runner, so rivals run upstream's size (4 vCPU); every runner uses Ubuntu 24.04.
+name: bench
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        type: choice
+        options: [boba-turbo, boba-standard, github-4, blacksmith-4]
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+  actions: read
+jobs:
+  build:
+    name: Build (${{ inputs.runner }})
+    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-24.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          submodules: 'recursive'
+          persist-credentials: false
+
+      - name: Use Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        with:
+          run_install: false
+
+      - name: Set freeCodeCamp Environment Variables
+        run: |
+          sed '/^[[:space:]]*#/d; /^$/d' sample.env >> $GITHUB_ENV
+
+      - name: Install and Build
+        run: |
+          pnpm install
+          pnpm run build
+
+      - name: Upload Client Artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: client-artifact
+          path: client/public
+          retention-days: 1
+
+  build-e2e-api:
+    name: Build E2E API (${{ inputs.runner }})
+    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-24.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Source Files
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          submodules: 'recursive'
+
+      - name: Create Image
+        run: |
+          docker build \
+            -t fcc-api \
+            -f docker/api/Dockerfile .
+
+      - name: Save Image
+        run: docker save fcc-api > api-artifact.tar
+
+      - name: Upload API Artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: api-artifact
+          path: api-artifact.tar
+          retention-days: 1
+
+  e2e:
+    name: E2E chromium (${{ inputs.runner }})
+    needs: [build, build-e2e-api]
+    runs-on: ${{ startsWith(inputs.runner, 'boba') && 'coldtea-boba' || inputs.runner == 'github-4' && 'ubuntu-24.04' || 'blacksmith-4vcpu-ubuntu-2404' }}
+    timeout-minutes: 45
+    steps:
+      - name: Set Action Environment Variables
+        run: |
+          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Checkout Source Files
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Download Client Artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: client-artifact
+          path: client/public
+
+      - name: Checkout client-config
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: freeCodeCamp/client-config
+          ref: b1ed468633f878a87ad3f0f27951e6ad1c926277
+          path: client-config
+          persist-credentials: false
+
+      - name: Move serve.json to Public Folder
+        run: cp client-config/serve.json client/public/serve.json
+
+      - name: Download Api Artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: api-artifact
+          path: api-artifact
+
+      - name: Load API Image
+        run: |
+          docker load < api-artifact/api-artifact.tar
+          rm api-artifact/api-artifact.tar
+
+      - name: Use Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        with:
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Set freeCodeCamp Environment Variables (needed by api)
+        run: |
+          sed '/^[[:space:]]*#/d; /^$/d' sample.env >> $GITHUB_ENV
+          cp sample.env .env # for docker compose
+
+      - name: Install playwright dependencies
+        run: npx playwright install --with-deps
+
+      - name: Install
+        run: pnpm install
+
+      # Upstream sleeps 10 s here; the bench also waits until the client and the api answer,
+      # so the tests never start against a server that is still coming up.
+      - name: Start apps
+        run: |
+          docker compose -f docker/docker-compose.yml -f docker/docker-compose.ports.yml -f docker/docker-compose.e2e.yml up -d
+          pnpm run serve:client-ci > serve.log 2>&1 &
+          sleep 10
+          for i in $(seq 1 120); do
+            if curl -s -o /dev/null http://127.0.0.1:8000 && curl -s -o /dev/null http://127.0.0.1:3000; then exit 0; fi
+            sleep 1
+          done
+          echo "The client or the api didn't respond within 130 seconds"
+          cat serve.log
+          docker compose -f docker/docker-compose.yml -f docker/docker-compose.ports.yml -f docker/docker-compose.e2e.yml logs --tail 50
+          exit 1
+
+      - name: Seed Exam Data
+        run: pnpm run seed:exams
+
+      # Upstream's playwright:run script runs `turbo setup && playwright test` in e2e/;
+      # the setup half is its own step here so every runner starts the tests the same way.
+      - name: Set up the e2e package
+        run: pnpm exec turbo setup --filter=@freecodecamp/e2e
+
+      - name: Run playwright tests on Boba
+        if: startsWith(inputs.runner, 'boba')
+        uses: coldteadotai/boba@v1
+        with:
+          working-directory: e2e
+          project: chromium
+          turbo: ${{ inputs.runner == 'boba-turbo' }}
+          fail-fast: false
+
+      - name: Run playwright tests
+        if: ${{ !startsWith(inputs.runner, 'boba') }}
+        working-directory: e2e
+        run: pnpm exec playwright test --project=chromium --reporter=list,json
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: ${{ github.workspace }}/results.json
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        if: ${{ always() && !startsWith(inputs.runner, 'boba') }}
+        with:
+          name: results-${{ inputs.runner }}
+          path: results.json
+          retention-days: 30

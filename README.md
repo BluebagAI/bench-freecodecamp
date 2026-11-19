@@ -1,3 +1,5 @@
+> **Benchmark copy.** This repository is an unmodified copy of [freeCodeCamp/freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) at commit [`cb6130cf8d3e3aab7a61d559a62826f6a746bdff`](https://github.com/freeCodeCamp/freeCodeCamp/commit/cb6130cf8d3e3aab7a61d559a62826f6a746bdff), used to benchmark CI runners on the project's own Playwright suite. It is not affiliated with or endorsed by the project. The only changes: this note, `.github/workflows/bench.yml` (run by hand only), and the project's other GitHub Actions workflows and Renovate config removed so nothing runs on its own. The project's license applies (see the license file). Each benchmark run's logs and test results are saved on the [`bench-results`](../../tree/bench-results) branch.
+
 [![freeCodeCamp Social Banner](https://cdn.freecodecamp.org/platform/universal/fcc_banner_new.png)](https://www.freecodecamp.org/)
 
 [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://www.firsttimersonly.com/)
