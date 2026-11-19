@@ -1,0 +1,445 @@
+[
+ {
+  "id": 135908741303,
+  "name": "Build E2E API (blacksmith-4)",
+  "html_url": "https://github.com/BluebagAI/bench-freecodecamp/actions/runs/44622829668/job/135908741303",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-19T21:50:48Z",
+  "started_at": "2026-11-19T21:50:54Z",
+  "completed_at": "2026-11-19T21:53:34Z",
+  "labels": [
+   "blacksmith-4vcpu-ubuntu-2404"
+  ],
+  "runner_name": "blacksmith-4vcpu-ubuntu-2404-ltpsdpom7rh7utna",
+  "runner_group_name": "blacksmith scale sets - blacksmith-4vcpu-ubuntu-2404",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-19T21:50:54Z",
+    "completed_at": "2026-11-19T21:50:55Z"
+   },
+   {
+    "name": "Set up runner",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-19T21:50:55Z",
+    "completed_at": "2026-11-19T21:50:55Z"
+   },
+   {
+    "name": "Checkout Source Files",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-19T21:50:55Z",
+    "completed_at": "2026-11-19T21:51:25Z"
+   },
+   {
+    "name": "Create Image",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-19T21:51:25Z",
+    "completed_at": "2026-11-19T21:52:46Z"
+   },
+   {
+    "name": "Save Image",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-19T21:52:46Z",
+    "completed_at": "2026-11-19T21:52:56Z"
+   },
+   {
+    "name": "Upload API Artifact",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-19T21:52:56Z",
+    "completed_at": "2026-11-19T21:53:20Z"
+   },
+   {
+    "name": "Post Checkout Source Files",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-19T21:53:20Z",
+    "completed_at": "2026-11-19T21:53:20Z"
+   },
+   {
+    "name": "Complete runner",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-19T21:53:20Z",
+    "completed_at": "2026-11-19T21:53:32Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-19T21:53:32Z",
+    "completed_at": "2026-11-19T21:53:32Z"
+   }
+  ]
+ },
+ {
+  "id": 135908741654,
+  "name": "Build (blacksmith-4)",
+  "html_url": "https://github.com/BluebagAI/bench-freecodecamp/actions/runs/44622829668/job/135908741654",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-19T21:50:48Z",
+  "started_at": "2026-11-19T21:50:56Z",
+  "completed_at": "2026-11-19T21:55:31Z",
+  "labels": [
+   "blacksmith-4vcpu-ubuntu-2404"
+  ],
+  "runner_name": "blacksmith-4vcpu-ubuntu-2404-u2d2oftl34ti5tpb",
+  "runner_group_name": "blacksmith scale sets - blacksmith-4vcpu-ubuntu-2404",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-19T21:50:57Z",
+    "completed_at": "2026-11-19T21:50:59Z"
+   },
+   {
+    "name": "Set up runner",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-19T21:50:59Z",
+    "completed_at": "2026-11-19T21:50:59Z"
+   },
+   {
+    "name": "Checkout",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-19T21:50:59Z",
+    "completed_at": "2026-11-19T21:51:24Z"
+   },
+   {
+    "name": "Use Node.js",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-19T21:51:24Z",
+    "completed_at": "2026-11-19T21:51:27Z"
+   },
+   {
+    "name": "Install pnpm",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-19T21:51:27Z",
+    "completed_at": "2026-11-19T21:51:31Z"
+   },
+   {
+    "name": "Set freeCodeCamp Environment Variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-19T21:51:31Z",
+    "completed_at": "2026-11-19T21:51:31Z"
+   },
+   {
+    "name": "Install and Build",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-19T21:51:32Z",
+    "completed_at": "2026-11-19T21:54:55Z"
+   },
+   {
+    "name": "Upload Client Artifact",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-19T21:54:55Z",
+    "completed_at": "2026-11-19T21:55:27Z"
+   },
+   {
+    "name": "Post Install pnpm",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-19T21:55:27Z",
+    "completed_at": "2026-11-19T21:55:27Z"
+   },
+   {
+    "name": "Post Use Node.js",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-19T21:55:27Z",
+    "completed_at": "2026-11-19T21:55:27Z"
+   },
+   {
+    "name": "Post Checkout",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-19T21:55:27Z",
+    "completed_at": "2026-11-19T21:55:28Z"
+   },
+   {
+    "name": "Complete runner",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-19T21:55:28Z",
+    "completed_at": "2026-11-19T21:55:28Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-19T21:55:28Z",
+    "completed_at": "2026-11-19T21:55:28Z"
+   }
+  ]
+ },
+ {
+  "id": 135911423198,
+  "name": "E2E chromium (blacksmith-4)",
+  "html_url": "https://github.com/BluebagAI/bench-freecodecamp/actions/runs/44622829668/job/135911423198",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-11-19T21:55:31Z",
+  "started_at": "2026-11-19T21:55:36Z",
+  "completed_at": "2026-11-19T22:02:58Z",
+  "labels": [
+   "blacksmith-4vcpu-ubuntu-2404"
+  ],
+  "runner_name": "blacksmith-4vcpu-ubuntu-2404-x6gvul2r3qwoet7i",
+  "runner_group_name": "blacksmith scale sets - blacksmith-4vcpu-ubuntu-2404",
+  "steps": [
+   {
+    "name": "Set up job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 1,
+    "started_at": "2026-11-19T21:55:37Z",
+    "completed_at": "2026-11-19T21:55:40Z"
+   },
+   {
+    "name": "Set up runner",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 2,
+    "started_at": "2026-11-19T21:55:40Z",
+    "completed_at": "2026-11-19T21:55:40Z"
+   },
+   {
+    "name": "Set Action Environment Variables",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 3,
+    "started_at": "2026-11-19T21:55:40Z",
+    "completed_at": "2026-11-19T21:55:40Z"
+   },
+   {
+    "name": "Checkout Source Files",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 4,
+    "started_at": "2026-11-19T21:55:40Z",
+    "completed_at": "2026-11-19T21:55:43Z"
+   },
+   {
+    "name": "Download Client Artifact",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 5,
+    "started_at": "2026-11-19T21:55:43Z",
+    "completed_at": "2026-11-19T21:55:53Z"
+   },
+   {
+    "name": "Checkout client-config",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 6,
+    "started_at": "2026-11-19T21:55:53Z",
+    "completed_at": "2026-11-19T21:55:53Z"
+   },
+   {
+    "name": "Move serve.json to Public Folder",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 7,
+    "started_at": "2026-11-19T21:55:53Z",
+    "completed_at": "2026-11-19T21:55:53Z"
+   },
+   {
+    "name": "Download Api Artifact",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 8,
+    "started_at": "2026-11-19T21:55:53Z",
+    "completed_at": "2026-11-19T21:56:14Z"
+   },
+   {
+    "name": "Load API Image",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-19T21:56:14Z",
+    "completed_at": "2026-11-19T21:56:19Z"
+   },
+   {
+    "name": "Use Node.js",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 10,
+    "started_at": "2026-11-19T21:56:19Z",
+    "completed_at": "2026-11-19T21:56:22Z"
+   },
+   {
+    "name": "Install pnpm",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 11,
+    "started_at": "2026-11-19T21:56:22Z",
+    "completed_at": "2026-11-19T21:56:25Z"
+   },
+   {
+    "name": "Install Dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 12,
+    "started_at": "2026-11-19T21:56:25Z",
+    "completed_at": "2026-11-19T21:56:35Z"
+   },
+   {
+    "name": "Set freeCodeCamp Environment Variables (needed by api)",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 13,
+    "started_at": "2026-11-19T21:56:35Z",
+    "completed_at": "2026-11-19T21:56:35Z"
+   },
+   {
+    "name": "Install playwright dependencies",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 14,
+    "started_at": "2026-11-19T21:56:35Z",
+    "completed_at": "2026-11-19T21:57:11Z"
+   },
+   {
+    "name": "Install",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 15,
+    "started_at": "2026-11-19T21:57:11Z",
+    "completed_at": "2026-11-19T21:57:11Z"
+   },
+   {
+    "name": "Start apps",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 16,
+    "started_at": "2026-11-19T21:57:11Z",
+    "completed_at": "2026-11-19T21:57:27Z"
+   },
+   {
+    "name": "Seed Exam Data",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 17,
+    "started_at": "2026-11-19T21:57:27Z",
+    "completed_at": "2026-11-19T21:57:27Z"
+   },
+   {
+    "name": "Set up the e2e package",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 18,
+    "started_at": "2026-11-19T21:57:27Z",
+    "completed_at": "2026-11-19T21:57:28Z"
+   },
+   {
+    "name": "Run playwright tests on Boba",
+    "status": "completed",
+    "conclusion": "skipped",
+    "number": 19,
+    "started_at": "2026-11-19T21:57:28Z",
+    "completed_at": "2026-11-19T21:57:28Z"
+   },
+   {
+    "name": "Run playwright tests",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 20,
+    "started_at": "2026-11-19T21:57:28Z",
+    "completed_at": "2026-11-19T22:02:49Z"
+   },
+   {
+    "name": "Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 21,
+    "started_at": "2026-11-19T22:02:49Z",
+    "completed_at": "2026-11-19T22:02:51Z"
+   },
+   {
+    "name": "Post Install pnpm",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 38,
+    "started_at": "2026-11-19T22:02:51Z",
+    "completed_at": "2026-11-19T22:02:51Z"
+   },
+   {
+    "name": "Post Use Node.js",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 39,
+    "started_at": "2026-11-19T22:02:51Z",
+    "completed_at": "2026-11-19T22:02:51Z"
+   },
+   {
+    "name": "Post Checkout client-config",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 40,
+    "started_at": "2026-11-19T22:02:51Z",
+    "completed_at": "2026-11-19T22:02:51Z"
+   },
+   {
+    "name": "Post Checkout Source Files",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 41,
+    "started_at": "2026-11-19T22:02:51Z",
+    "completed_at": "2026-11-19T22:02:52Z"
+   },
+   {
+    "name": "Complete runner",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 42,
+    "started_at": "2026-11-19T22:02:52Z",
+    "completed_at": "2026-11-19T22:02:56Z"
+   },
+   {
+    "name": "Complete job",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 43,
+    "started_at": "2026-11-19T22:02:56Z",
+    "completed_at": "2026-11-19T22:02:56Z"
+   }
+  ]
+ }
+]
