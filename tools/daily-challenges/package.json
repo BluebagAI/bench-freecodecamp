@@ -1,0 +1,21 @@
+{
+  "name": "daily-challenges",
+  "version": "1.0.0",
+  "main": "seed-daily-challenges.js",
+  "scripts": {
+    "seed-daily-challenges": "tsx seed-daily-challenges.ts",
+    "lint": "oxlint --deny-warnings",
+    "type-check": "tsc --noEmit"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@freecodecamp/oxlint-config": "workspace:*",
+    "dotenv": "16.6.1",
+    "mongodb": "6.22.0",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  },
+  "type": "module"
+}

@@ -1,0 +1,28 @@
+{
+  "isUpcomingChange": false,
+  "dashedName": "write-your-first-code-using-c-sharp",
+  "helpCategory": "C-Sharp",
+  "challengeOrder": [
+    {
+      "id": "647e239e8acb466c97ccbf05",
+      "title": "Write Your First C# Code"
+    },
+    {
+      "id": "647e238f8acb466c97ccbf04",
+      "title": "Store Data with Variables in C#"
+    },
+    {
+      "id": "647e23788acb466c97ccbf02",
+      "title": "Perform Basic Operations on Numbers in C#"
+    },
+    {
+      "id": "647e21ba8acb466c97ccbee6",
+      "title": "Add Decision Logic to Your Code in C#"
+    },
+    {
+      "id": "647f85d407d29547b3bee1bb",
+      "title": "Trophy - Write Your First Code Using C#"
+    }
+  ],
+  "blockLayout": "legacy-challenge-list"
+}

@@ -1,0 +1,10 @@
+{
+  "exclude": ["oxlint.config.ts"],
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["es5", "dom", "ES2017"],
+    "module": "node16",
+    "moduleResolution": "node16"
+  },
+  "extends": "../tsconfig-base.json"
+}

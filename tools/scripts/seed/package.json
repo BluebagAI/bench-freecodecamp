@@ -1,0 +1,31 @@
+{
+  "name": "@freecodecamp/scripts-seed",
+  "version": "0.0.1",
+  "description": "The freeCodeCamp.org open-source codebase and curriculum",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "engines": {
+    "node": ">=26",
+    "pnpm": ">=12"
+  },
+  "scripts": {
+    "lint": "oxlint --deny-warnings"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeCodeCamp/freeCodeCamp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
+  },
+  "homepage": "https://github.com/freeCodeCamp/freeCodeCamp#readme",
+  "author": "freeCodeCamp <team@freecodecamp.org>",
+  "main": "none",
+  "devDependencies": {
+    "@freecodecamp/oxlint-config": "workspace:*",
+    "debug": "4.4.3",
+    "dotenv": "16.6.1",
+    "lodash": "4.18.1",
+    "mongodb": "6.22.0"
+  }
+}
